@@ -21,7 +21,8 @@ Final-Assignment-Probability-and-Statistics/
 |-- src/                   # Python experiment programs
 |   |-- .gitkeep
 |   |-- experiment_01.py   # Joint and marginal distribution simulation
-|   `-- experiment_02.py   # Conditional distribution and prediction analysis
+|   |-- experiment_02.py   # Conditional distribution and prediction analysis
+|   `-- experiment_03.py   # Correlation estimation and Monte Carlo accuracy
 |-- results/               # Figures, tables, and experiment records
 |   |-- .gitkeep
 |   |-- sample_rho_neg09.csv
@@ -31,7 +32,11 @@ Final-Assignment-Probability-and-Statistics/
 |   |-- fig_02_marginal_distributions.png
 |   |-- fig_03_conditional_distribution.png
 |   |-- fig_04_conditional_prediction.png
-|   `-- table_02_conditional_summary.csv
+|   |-- table_02_conditional_summary.csv
+|   |-- table_03_sample_estimates.csv
+|   |-- table_04_monte_carlo_estimation.csv
+|   |-- fig_05_sample_estimates.png
+|   `-- fig_06_estimation_accuracy.png
 |-- .gitignore
 |-- README.md
 `-- requirements.txt
@@ -83,10 +88,22 @@ python src/experiment_02.py
 
 The experiment writes two 300-DPI figures and `table_02_conditional_summary.csv` to `results/`. All sample variances reported in the summary use `ddof=1`; the prediction MSE uses the mean squared error over all 500 observations.
 
+## Experiment 3: Correlation Estimation and Monte Carlo Accuracy
+
+Experiment 3 first computes sample means, sample standard deviations, covariance, and Pearson correlation from the three existing 500-observation datasets. It then uses 1000 newly generated samples for each combination of `rho = -0.9, 0, 0.9` and `n = 30, 100, 500, 2000` to evaluate estimator bias, empirical standard deviation, and RMSE. The Monte Carlo random seed is fixed at `20261107`.
+
+Run the experiment from the project root after activating the virtual environment:
+
+```powershell
+python src/experiment_03.py
+```
+
+The experiment writes `table_03_sample_estimates.csv`, `table_04_monte_carlo_estimation.csv`, and two 300-DPI figures to `results/`. Sample standard deviations, sample covariances, and estimator empirical standard deviations use `ddof=1`.
+
 ## Experiment Plan
 
 The planned study covers joint and marginal distributions, conditional distributions and prediction error, sample covariance and Pearson correlation estimation, the effect of sample size on estimation accuracy, and hypothesis tests for zero correlation with simulated Type I error rates and statistical power.
 
 ## Development Status
 
-**Experiment 2 complete** — the project now includes reproducible joint/marginal simulation, exact interval-conditioned moment analysis, and theoretical conditional prediction assessment.
+**Experiment 3 complete** — the project now includes reproducible distribution simulation, conditional prediction analysis, finite-sample covariance and correlation estimates, and Monte Carlo estimation-accuracy results.
