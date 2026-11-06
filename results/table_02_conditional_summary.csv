@@ -1,0 +1,8 @@
+statistic,theoretical_value,sample_value
+original_sample_size,500,500
+conditional_sample_size,,75
+marginal_y_mean,0,0.06190535937
+marginal_y_variance,1,0.9975659222
+conditional_y_mean,0.661086413,0.6549784386
+conditional_y_variance,0.2066195762,0.2165508261
+prediction_mse,0.19,0.2141606076

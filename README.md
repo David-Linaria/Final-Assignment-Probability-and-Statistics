@@ -20,14 +20,18 @@ Final-Assignment-Probability-and-Statistics/
 |   `-- settings.json      # VS Code interpreter configuration
 |-- src/                   # Python experiment programs
 |   |-- .gitkeep
-|   `-- experiment_01.py   # Joint and marginal distribution simulation
+|   |-- experiment_01.py   # Joint and marginal distribution simulation
+|   `-- experiment_02.py   # Conditional distribution and prediction analysis
 |-- results/               # Figures, tables, and experiment records
 |   |-- .gitkeep
 |   |-- sample_rho_neg09.csv
 |   |-- sample_rho_zero.csv
 |   |-- sample_rho_pos09.csv
 |   |-- fig_01_joint_scatter.png
-|   `-- fig_02_marginal_distributions.png
+|   |-- fig_02_marginal_distributions.png
+|   |-- fig_03_conditional_distribution.png
+|   |-- fig_04_conditional_prediction.png
+|   `-- table_02_conditional_summary.csv
 |-- .gitignore
 |-- README.md
 `-- requirements.txt
@@ -67,10 +71,22 @@ python src/experiment_01.py
 
 The generated CSV files and 300-DPI PNG figures are written to `results/`.
 
+## Experiment 2: Conditional Distribution and Prediction
+
+Experiment 2 reads the existing positive-correlation sample from `results/sample_rho_pos09.csv`; it does not regenerate or modify the Phase 2 data. The analysis compares the marginal distribution of Y with the observed distribution under `0.5 < X < 1.0`, evaluates the exact interval-conditioned theoretical moments, and compares the observed prediction MSE with the theoretical value `1 - rho^2`.
+
+Run the experiment from the project root after activating the virtual environment:
+
+```powershell
+python src/experiment_02.py
+```
+
+The experiment writes two 300-DPI figures and `table_02_conditional_summary.csv` to `results/`. All sample variances reported in the summary use `ddof=1`; the prediction MSE uses the mean squared error over all 500 observations.
+
 ## Experiment Plan
 
 The planned study covers joint and marginal distributions, conditional distributions and prediction error, sample covariance and Pearson correlation estimation, the effect of sample size on estimation accuracy, and hypothesis tests for zero correlation with simulated Type I error rates and statistical power.
 
 ## Development Status
 
-**Experiment 1 complete** — the environment is initialized, and the reproducible bivariate normal sampling and joint/marginal distribution visualizations are implemented.
+**Experiment 2 complete** — the project now includes reproducible joint/marginal simulation, exact interval-conditioned moment analysis, and theoretical conditional prediction assessment.
