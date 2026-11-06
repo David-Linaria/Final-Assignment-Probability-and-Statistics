@@ -22,7 +22,8 @@ Final-Assignment-Probability-and-Statistics/
 |   |-- .gitkeep
 |   |-- experiment_01.py   # Joint and marginal distribution simulation
 |   |-- experiment_02.py   # Conditional distribution and prediction analysis
-|   `-- experiment_03.py   # Correlation estimation and Monte Carlo accuracy
+|   |-- experiment_03.py   # Correlation estimation and Monte Carlo accuracy
+|   `-- experiment_04.py   # Pearson testing and statistical power
 |-- results/               # Figures, tables, and experiment records
 |   |-- .gitkeep
 |   |-- sample_rho_neg09.csv
@@ -36,7 +37,11 @@ Final-Assignment-Probability-and-Statistics/
 |   |-- table_03_sample_estimates.csv
 |   |-- table_04_monte_carlo_estimation.csv
 |   |-- fig_05_sample_estimates.png
-|   `-- fig_06_estimation_accuracy.png
+|   |-- fig_06_estimation_accuracy.png
+|   |-- table_05_single_sample_tests.csv
+|   |-- table_06_monte_carlo_testing.csv
+|   |-- fig_07_null_pvalues.png
+|   `-- fig_08_testing_performance.png
 |-- .gitignore
 |-- README.md
 `-- requirements.txt
@@ -100,10 +105,22 @@ python src/experiment_03.py
 
 The experiment writes `table_03_sample_estimates.csv`, `table_04_monte_carlo_estimation.csv`, and two 300-DPI figures to `results/`. Sample standard deviations, sample covariances, and estimator empirical standard deviations use `ddof=1`.
 
+## Experiment 4: Pearson Testing and Statistical Power
+
+Experiment 4 applies two-sided Pearson correlation tests to the three existing 500-observation datasets. It then performs 1000 independent tests for each combination of `rho = 0, 0.1, 0.3, 0.5, 0.9` and `n = 30, 100, 500, 2000` to estimate the Type I error rate under the null and statistical power under nonzero correlations. The significance level is `0.05`, and the Monte Carlo random seed is fixed at `20261108`.
+
+Run the experiment from the project root after activating the virtual environment:
+
+```powershell
+python src/experiment_04.py
+```
+
+The experiment writes `table_05_single_sample_tests.csv`, `table_06_monte_carlo_testing.csv`, and two 300-DPI figures to `results/`. Figure 7 uses the p-values produced by the `rho = 0`, `n = 100` Monte Carlo tests rather than a separate simulation.
+
 ## Experiment Plan
 
 The planned study covers joint and marginal distributions, conditional distributions and prediction error, sample covariance and Pearson correlation estimation, the effect of sample size on estimation accuracy, and hypothesis tests for zero correlation with simulated Type I error rates and statistical power.
 
 ## Development Status
 
-**Experiment 3 complete** — the project now includes reproducible distribution simulation, conditional prediction analysis, finite-sample covariance and correlation estimates, and Monte Carlo estimation-accuracy results.
+**Experiment 4 complete** — the project now includes reproducible distribution simulation, conditional prediction analysis, finite-sample estimation, Pearson significance testing, and Monte Carlo Type I error and power results.
